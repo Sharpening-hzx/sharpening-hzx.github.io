@@ -1,27 +1,38 @@
-/* 引入全局字体（meow.otf） */
+/* 引入霞鹜文楷字体 - 本地 + CDN 备用 */
 @font-face {
   font-family: 'LXGWWenKai-Regular';
-  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');  /* otf字体，ttf把format改成truetype */
+  src: 
+    /* 优先使用本地字体 */
+    local('LXGW WenKai'),
+    local('LXGWWenKai-Regular'),
+    url('/fonts/LXGWWenKai-Regular.ttf') format('truetype'),
+    /* CDN 备用，防止本地加载失败 */
+    url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.6.0/fonts/LXGWWenKai-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;  /* 关键优化：字体交换 */
 }
 
-/* 引入代码字体（shaonv.ttf） */
+/* 引入代码字体 */
 @font-face {
   font-family: 'MapleMonoNormal-Regular';
-  src: url('/fonts/MapleMonoNormal-Regular.otf') format('opentype');  /* ttf字体，otf把format改成opentype */
+  src: 
+    local('Maple Mono'),
+    local('MapleMonoNormal-Regular'),
+    url('/fonts/MapleMonoNormal-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;  /* 关键优化：字体交换 */
 }
 
 /* 设置全局字体 */
 body {
-  font-family: 'LXGWWenKai-Regular', "Georgia", "Arial", sans-serif;
+  font-family: 'LXGWWenKai-Regular', -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 16px;
 }
 
 /* 设置代码字体 */
 code, pre {
-  font-family: 'MapleMonoNormal-Regular', "Fira Code", "Courier", monospace;
+  font-family: 'MapleMonoNormal-Regular', "Fira Code", "Cascadia Code", "Courier New", monospace;
   font-size: 16px;
 }
